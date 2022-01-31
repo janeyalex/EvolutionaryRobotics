@@ -14,20 +14,27 @@ p.loadSDF("world.sdf")
 
 pyrosim.Prepare_To_Simulate(robotId)
 
-backLegSensorValues = np.zeros(10000)
+backLegSensorValues = np.zeros(100)
+frontLegSensorValues = np.zeros(100)
 
 
 
-for i in range(10000):
+for i in range(100):
     sleep(1/60)
     p.stepSimulation()
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+    frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
     
-print(backLegSensorValues)
+
 p.disconnect()
 
 save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
-file_name = "sensoryData"
+file_name = "sensoryDataBackLeg"
 completeName = os.path.join(save_path, file_name)
 
 np.save(completeName,backLegSensorValues)
+
+file_name1 = "sensoryDataFrontLeg"
+completeName1 = os.path.join(save_path, file_name1)
+
+np.save(completeName1,frontLegSensorValues)

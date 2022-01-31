@@ -1,12 +1,15 @@
+from cProfile import label
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-backLegSensorValues = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sensoryData.npy')
-print(backLegSensorValues)
+backLegSensorValues = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sensoryDataBackLeg.npy')
+frontLegSensorValues = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sensoryDataFrontLeg.npy')
 
-plt.plot(backLegSensorValues)
-plt.xscale
+plt.plot(backLegSensorValues, label = "Back Leg Sensor", linewidth = 3)
+plt.plot(frontLegSensorValues, label = "Front Leg Sensor")
+plt.xlim(0, 100)
+plt.legend()
 plt.show()
 
 
