@@ -7,6 +7,11 @@ import os
 import math
 import random
 
+amplitude = np.pi/4
+frequency = 10
+phaseOffset = 0
+#amplitude * sin(frequency * i + phaseOffset)
+
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)
@@ -20,14 +25,19 @@ backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
 
 x = np.linspace(0, 2*(np.pi), 1000)
-targetAngles = np.sin(x)*(np.pi/4)
+targetAngles = np.zeros(1000)
+for i in range(1000):
+    targetAngles[i] = amplitude *(np.sin((frequency*x[i])+phaseOffset))
 
-# save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
-# file_name2 = "sinData"
-# completeName2 = os.path.join(save_path, file_name2)
 
-# np.save(completeName2,targetAngles)
-# exit()
+#targetAngles = np.sin(x)*(np.pi/4)
+
+save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
+file_name2 = "sinData"
+completeName2 = os.path.join(save_path, file_name2)
+
+np.save(completeName2,targetAngles)
+exit()
 
 for i in range(1000):
     sleep(1/10000)
