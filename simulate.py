@@ -19,10 +19,18 @@ pyrosim.Prepare_To_Simulate(robotId)
 backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
 
+x = np.linspace(0, 2*(np.pi), 1000)
+targetAngles = np.sin(x)*(np.pi/4)
 
+# save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
+# file_name2 = "sinData"
+# completeName2 = os.path.join(save_path, file_name2)
+
+# np.save(completeName2,targetAngles)
+# exit()
 
 for i in range(1000):
-    sleep(1/60)
+    sleep(1/10000)
     p.stepSimulation()
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
@@ -30,15 +38,15 @@ for i in range(1000):
         bodyIndex = robotId,
         jointName = "Torso_BackLeg",
         controlMode = p.POSITION_CONTROL,
-        targetPosition = random.uniform(-math.pi/2.0, math.pi/2.0),
-        maxForce = 75)
+        targetPosition = targetAngles[i],
+        maxForce = 500)
     
     pyrosim.Set_Motor_For_Joint(
         bodyIndex = robotId,
         jointName = "Torso_FrontLeg",
         controlMode = p.POSITION_CONTROL,
-        targetPosition = random.uniform(-math.pi/2.0, math.pi/2.0),
-        maxForce = 75)
+        targetPosition = targetAngles[i],
+        maxForce = 500)
 
 p.disconnect()
 
@@ -52,3 +60,4 @@ file_name1 = "sensoryDataFrontLeg"
 completeName1 = os.path.join(save_path, file_name1)
 
 np.save(completeName1,frontLegSensorValues)
+
