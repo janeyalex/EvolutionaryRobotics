@@ -8,14 +8,14 @@ import math
 import random
 
 #back leg variables
-amplitudeBack = np.pi/4
+amplitudeBack = np.pi/6
 frequencyBack = 10
-phaseOffsetBack = 0
+phaseOffsetBack = np.pi/4
 
 #front leg variables
-amplitudeFront = np.pi/4
-frequencyFront = 1
-phaseOffsetFront = (3/2)*np.pi
+amplitudeFront = np.pi/6
+frequencyFront = 10
+phaseOffsetFront = -(3/2)*np.pi
 #amplitude * sin(frequency * i + phaseOffset)
 
 physicsClient = p.connect(p.GUI)
@@ -52,7 +52,7 @@ for i in range(1000):
 # exit()
 
 for i in range(1000):
-    sleep(1/500)
+    sleep(1/1000)
     p.stepSimulation()
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
@@ -61,14 +61,14 @@ for i in range(1000):
         jointName = "Torso_BackLeg",
         controlMode = p.POSITION_CONTROL,
         targetPosition = targetAnglesBack[i],
-        maxForce = 500)
+        maxForce = 200)
     
     pyrosim.Set_Motor_For_Joint(
         bodyIndex = robotId,
         jointName = "Torso_FrontLeg",
         controlMode = p.POSITION_CONTROL,
         targetPosition = targetAnglesFront[i],
-        maxForce = 500)
+        maxForce = 200)
 
 p.disconnect()
 
