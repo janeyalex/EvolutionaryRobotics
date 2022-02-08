@@ -12,8 +12,11 @@ import matplotlib.pyplot as plt
 # plt.legend()
 # plt.show()
 
-targetValues = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sinData.npy')
-plt.plot(targetValues)
+targetValuesBack = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sinBackData.npy')
+targetValuesFront = np.load('/Users/janeyalex/Documents/CS206/JaneysBots/data/sinFrontData.npy')
+plt.plot(targetValuesBack, label = "Back Leg Sensor", linewidth = 3)
+plt.plot(targetValuesFront, label = "Front Leg Sensor")
 plt.xlim(0, 1000)
+plt.legend()
 plt.show()
 

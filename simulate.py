@@ -7,9 +7,15 @@ import os
 import math
 import random
 
-amplitude = np.pi/4
-frequency = 10
-phaseOffset = 0
+#back leg variables
+amplitudeBack = np.pi/4
+frequencyBack = 10
+phaseOffsetBack = 0
+
+#front leg variables
+amplitudeFront = np.pi/4
+frequencyFront = 1
+phaseOffsetFront = (3/2)*np.pi
 #amplitude * sin(frequency * i + phaseOffset)
 
 physicsClient = p.connect(p.GUI)
@@ -25,22 +31,28 @@ backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
 
 x = np.linspace(0, 2*(np.pi), 1000)
-targetAngles = np.zeros(1000)
+
+targetAnglesBack = np.zeros(1000)
+targetAnglesFront = np.zeros(1000)
 for i in range(1000):
-    targetAngles[i] = amplitude *(np.sin((frequency*x[i])+phaseOffset))
+    targetAnglesBack[i] = amplitudeBack *(np.sin((frequencyBack*x[i])+phaseOffsetBack))
+    targetAnglesFront[i] = amplitudeFront *(np.sin((frequencyFront*x[i])+phaseOffsetFront))
 
 
-#targetAngles = np.sin(x)*(np.pi/4)
 
-save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
-file_name2 = "sinData"
-completeName2 = os.path.join(save_path, file_name2)
+# save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
+# file_name2 = "sinBackData"
+# completeName2 = os.path.join(save_path, file_name2)
+# np.save(completeName2,targetAnglesBack)
 
-np.save(completeName2,targetAngles)
-exit()
+# file_name3 = "sinFrontData"
+# completeName3 = os.path.join(save_path, file_name3)
+# np.save(completeName3,targetAnglesFront)
+
+# exit()
 
 for i in range(1000):
-    sleep(1/10000)
+    sleep(1/500)
     p.stepSimulation()
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
@@ -48,14 +60,14 @@ for i in range(1000):
         bodyIndex = robotId,
         jointName = "Torso_BackLeg",
         controlMode = p.POSITION_CONTROL,
-        targetPosition = targetAngles[i],
+        targetPosition = targetAnglesBack[i],
         maxForce = 500)
     
     pyrosim.Set_Motor_For_Joint(
         bodyIndex = robotId,
         jointName = "Torso_FrontLeg",
         controlMode = p.POSITION_CONTROL,
-        targetPosition = targetAngles[i],
+        targetPosition = targetAnglesFront[i],
         maxForce = 500)
 
 p.disconnect()
