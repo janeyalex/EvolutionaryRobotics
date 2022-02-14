@@ -13,7 +13,7 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
         self.world = WORLD()
         self.robot = ROBOT()
-        pyrosim.Prepare_To_Simulate(self.robot.robotId)
+        
 
     def Run(self):
         for i in range(1000):
