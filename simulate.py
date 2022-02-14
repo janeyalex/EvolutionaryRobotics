@@ -1,12 +1,12 @@
-# from time import sleep
-# import pybullet as p 
-# import pybullet_data
-# import pyrosim.pyrosim as pyrosim
-# import numpy as np
-# import os
-# import math
-# import random
-# import constants as c
+from time import sleep
+import pybullet as p 
+import pybullet_data
+import pyrosim.pyrosim as pyrosim
+import numpy as np
+import os
+import math
+import random
+import constants as c
 from simulation import SIMULATION
 
 # #back leg variables
@@ -20,14 +20,10 @@ from simulation import SIMULATION
 # phaseOffsetFront = c.phaseOffsetFront
 # #amplitude * sin(frequency * i + phaseOffset)
 
-# physicsClient = p.connect(p.GUI)
-# p.setAdditionalSearchPath(pybullet_data.getDataPath())
-# p.setGravity(0,0,-9.8)
-# planeId = p.loadURDF("plane.urdf")
-# robotId = p.loadURDF("body.urdf")
-# p.loadSDF("world.sdf")
 
-# pyrosim.Prepare_To_Simulate(robotId)
+
+
+
 
 # backLegSensorValues = np.zeros(1000)
 # frontLegSensorValues = np.zeros(1000)
