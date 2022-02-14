@@ -49,26 +49,9 @@ from simulation import SIMULATION
 
 # # exit()
 
-# for i in range(1000):
-#     sleep(1/1000)
-#     p.stepSimulation()
-#     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-#     frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-#     pyrosim.Set_Motor_For_Joint(
-#         bodyIndex = robotId,
-#         jointName = "Torso_BackLeg",
-#         controlMode = p.POSITION_CONTROL,
-#         targetPosition = targetAnglesBack[i],
-#         maxForce = c.maxForce)
-    
-#     pyrosim.Set_Motor_For_Joint(
-#         bodyIndex = robotId,
-#         jointName = "Torso_FrontLeg",
-#         controlMode = p.POSITION_CONTROL,
-#         targetPosition = targetAnglesFront[i],
-#         maxForce = c.maxForce)
 
-# p.disconnect()
+
+
 
 # save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
 # file_name = "sensoryDataBackLeg"
@@ -82,3 +65,4 @@ from simulation import SIMULATION
 # np.save(completeName1,frontLegSensorValues)
 
 simulation = SIMULATION()
+simulation.Run()
