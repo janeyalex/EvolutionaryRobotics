@@ -25,8 +25,8 @@ from simulation import SIMULATION
 
 
 
-# backLegSensorValues = np.zeros(1000)
-# frontLegSensorValues = np.zeros(1000)
+
+
 
 # x = np.linspace(0, 2*(np.pi), 1000)
 

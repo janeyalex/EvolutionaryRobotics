@@ -16,12 +16,12 @@ class SIMULATION:
         
 
     def Run(self):
-        for i in range(1000):
+        for timeStep in range(1000):
             #print(i)
              sleep(1/100)
              p.stepSimulation()
-        #     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-        #     frontLegSensorValues[i]= pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+             self.robot.Sense(timeStep)
+
         #     pyrosim.Set_Motor_For_Joint(
         #         bodyIndex = robotId,
         #         jointName = "Torso_BackLeg",
