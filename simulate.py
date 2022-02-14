@@ -7,6 +7,7 @@
 # import math
 # import random
 # import constants as c
+from simulation import SIMULATION
 
 # #back leg variables
 # amplitudeBack = c.amplitudeBack
@@ -84,4 +85,4 @@
 
 # np.save(completeName1,frontLegSensorValues)
 
-pass
+simulation = SIMULATION()
