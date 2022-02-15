@@ -13,7 +13,7 @@ class MOTOR:
     def Prepare_To_Act(self):
         if(self.jointName == "Torso_BackLeg"):
             self.amplitude = c.amplitudeBack
-            self.frequency = (c.frequencyBack)/2
+            self.frequency = 2
             self.offset = c.phaseOffsetBack
         else:
             self.amplitude = c.amplitudeBack
