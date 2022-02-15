@@ -2,7 +2,7 @@ import numpy as np
 
 #back leg variables
 amplitudeBack = np.pi/6
-frequencyBack = 10
+frequencyBack = 50
 phaseOffsetBack = np.pi/4
 
 #front leg variables

@@ -7,13 +7,18 @@ import os
 class MOTOR:
     def __init__(self, jointName):
         self.jointName= jointName
+        print(self.jointName)
         self.Prepare_To_Act()
 
     def Prepare_To_Act(self):
-
-        self.amplitude = c.amplitudeBack
-        self.frequency = c.frequencyBack
-        self.offset = c.phaseOffsetBack
+        if(self.jointName == "Torso_BackLeg"):
+            self.amplitude = c.amplitudeBack
+            self.frequency = (c.frequencyBack)/2
+            self.offset = c.phaseOffsetBack
+        else:
+            self.amplitude = c.amplitudeBack
+            self.frequency = c.frequencyBack
+            self.offset = c.phaseOffsetBack
 
         self.x = np.linspace(0, 2*(np.pi), 1000)
 
