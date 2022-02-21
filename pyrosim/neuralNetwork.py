@@ -28,6 +28,10 @@ class NEURAL_NETWORK:
 
         print("")
 
+    def Update(self):
+        for key in self.neurons:
+            print(key)
+
 # ---------------- Private methods --------------------------------------
 
     def Add_Neuron_According_To(self,line):
