@@ -39,12 +39,13 @@ class NEURAL_NETWORK:
         return self.neurons.keys()
 
     def Is_Motor_Neuron(self,neuronName):
-        #TODO: FIX
-        return NEURON(neuronName).Is_Motor_Neuron()
+        return self.neurons[neuronName].Is_Motor_Neuron()
 
     def Get_Motor_Neurons_Joint(self,neuronName):
-        #TODO: FIX
-        return NEURON(neuronName).Get_Joint_Name()
+        return self.neurons[neuronName].Get_Joint_Name()
+
+    def Get_Value_Of(self,neuronName):
+        return self.neurons[neuronName].Get_Value()
 
 # ---------------- Private methods --------------------------------------
 
