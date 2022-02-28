@@ -51,7 +51,7 @@ class NEURON:
                 self.synapseWeight = synapses[key].Get_Weight()
                 self.presynapticVal = neurons[key[0]].Get_Value()
                 self.Allow_Presynaptic_Neuron_To_Influence_Me(self.synapseWeight,self.presynapticVal)
-        print(self.Get_Value())     
+                print(self.Get_Value())     
         exit() 
 
                 
