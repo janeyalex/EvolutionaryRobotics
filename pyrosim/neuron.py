@@ -47,13 +47,14 @@ class NEURON:
         self.Set_Value(0.0)
         print(self.Get_Value())
         for key in synapses:
-            if key[1] == self.Get_Name():
-                self.synapseWeight = synapses[key].Get_Weight()
-                self.presynapticVal = neurons[key[0]].Get_Value()
-                self.Allow_Presynaptic_Neuron_To_Influence_Me(self.synapseWeight,self.presynapticVal)
-                print(self.Get_Value())     
-        exit() 
-
+            if self.Get_Name() == synapses[key].Get_Target_Neuron_Name():
+                synapseWeight = synapses[key].Get_Weight()
+                presynapticVal = neurons[key[0]].Get_Value()
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapseWeight,presynapticVal)
+                   
+        self.Threshold()
+        print(self.Get_Value())  
+        exit()  
                 
     def Is_Sensor_Neuron(self):
 
