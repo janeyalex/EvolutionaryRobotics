@@ -10,4 +10,4 @@ amplitudeFront = np.pi/6
 frequencyFront = 10
 phaseOffsetFront = -(3/2)*np.pi
 
-maxForce = 200
+maxForce = 30
