@@ -23,6 +23,7 @@ class ROBOT:
             self.sensorI = self.sensors[i]
             self.sensorI.getValue(self.timeStep)
 
+
     def Prepare_To_Act(self):
         self.motors = {}
         for jointName in pyrosim.jointNamesToIndices:
@@ -38,5 +39,5 @@ class ROBOT:
                 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+        #self.nn.Print()
         
