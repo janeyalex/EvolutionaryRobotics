@@ -15,11 +15,6 @@ def Create_World():
 def Create_Robot():
     pass
      
-    
-    
-
- 
-   
 
 def Generate_Body():
     length=1

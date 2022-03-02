@@ -8,11 +8,9 @@ class SENSOR:
         self.values = np.zeros(1000)
         
     def getValue(self,timeStep):
-        print("i am in get value")
         self.timeStep =timeStep
         self.values[self.timeStep] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
         print(self.values[self.timeStep])
-        exit()
     def Save_Values(self):
         self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
         self.file_name = "sensoryData"

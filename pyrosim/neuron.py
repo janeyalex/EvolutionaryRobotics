@@ -84,10 +84,9 @@ class NEURON:
         # print("")
 
     def Set_Value(self,value):
-        print(value)
+        #print(value)
         self.value = value
-        print(self.value)
-        exit()
+        #print(self.value)
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, currentSynapseWeight, presynapticVal):
         self.Add_To_Value(currentSynapseWeight*presynapticVal)
