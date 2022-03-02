@@ -15,7 +15,6 @@ class SIMULATION:
         
 
     def Run(self):
-        print("running")
         for timeStep in range(1000):
              sleep(1/60)
              p.stepSimulation()
