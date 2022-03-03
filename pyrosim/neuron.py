@@ -59,8 +59,7 @@ class NEURON:
                 self.Allow_Presynaptic_Neuron_To_Influence_Me(synapseWeight,presynapticVal)
                    
         self.Threshold()
-        print("Value After: ",self.Get_Value())   
-        exit()      
+        print("Value After: ",self.Get_Value())      
     def Is_Sensor_Neuron(self):
 
         return self.type == c.SENSOR_NEURON
