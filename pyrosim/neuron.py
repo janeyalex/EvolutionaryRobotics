@@ -45,22 +45,18 @@ class NEURON:
 
     def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
         self.Set_Value(0.0)
-        #print("Value Before: ",self.Get_Value())
-        #print(self.Get_Name())
+        print("Value Before: ",self.Get_Value())
         for key in synapses:
             if self.Get_Name() == synapses[key].Get_Target_Neuron_Name():
-                #print("presynaptic neuron: ", key[0])
-                #print("postsynaptic neuron: ", key[1])
+                print("presynaptic neuron: ", key[0])
+                print("postsynaptic neuron: ", key[1])
                 synapseWeight = synapses[key].Get_Weight()
-                #print("Synapse Weight: ", synapseWeight)
+                print("Synapse Weight: ", synapseWeight)
                 presynapticVal = neurons[key[0]].Get_Value()
-                print(neurons[key[0]].Get_Name())
-                exit()
-                #print("presynaptic value: ", presynapticVal)
-                
+                print("presynaptic value: ", presynapticVal)
                 self.Allow_Presynaptic_Neuron_To_Influence_Me(synapseWeight,presynapticVal)
                    
-        self.Threshold()
+        #self.Threshold()
         print("Value After: ",self.Get_Value())      
     def Is_Sensor_Neuron(self):
 
