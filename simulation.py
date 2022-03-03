@@ -16,7 +16,7 @@ class SIMULATION:
 
     def Run(self):
         for timeStep in range(1000):
-             sleep(1/60)
+             sleep(1/1000)
              p.stepSimulation()
              self.robot.Sense(timeStep)
              self.robot.Think()
