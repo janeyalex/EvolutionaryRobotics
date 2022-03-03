@@ -54,10 +54,13 @@ class NEURON:
                 print("Synapse Weight: ", synapseWeight)
                 presynapticVal = neurons[key[0]].Get_Value()
                 print("presynaptic value: ", presynapticVal)
+                
                 self.Allow_Presynaptic_Neuron_To_Influence_Me(synapseWeight,presynapticVal)
-                   
+            print("Value After: ",self.Get_Value())
+        exit()           
         #self.Threshold()
-        print("Value After: ",self.Get_Value())      
+        #print("Value After: ",self.Get_Value())  
+           
     def Is_Sensor_Neuron(self):
 
         return self.type == c.SENSOR_NEURON
