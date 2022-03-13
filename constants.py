@@ -1,5 +1,13 @@
 import numpy as np
 
+length = 1
+width = 1
+height =1
+
+x = -2.5
+y = 2.5
+z = 0.5
+
 #back leg variables
 amplitudeBack = np.pi/6
 frequencyBack = 50
