@@ -20,8 +20,8 @@ phaseOffsetFront = -(3/2)*np.pi
 
 maxForce = 25
 
-numberOfGenerations = 2
+numberOfGenerations = 20
 
-numTimeSteps = 100
+numTimeSteps = 1000
 
 sleep = 1/500

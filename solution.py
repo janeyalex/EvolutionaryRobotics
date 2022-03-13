@@ -13,12 +13,12 @@ class SOLUTION:
                 self.weights [i][j] = np.random.rand()
         self.weights = self.weights * 2 - 1
         
-    def Evaluate(self):
+    def Evaluate(self, displaySetting):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
 
-        os.system('python3 simulate.py')
+        os.system('python3 simulate.py ' + displaySetting)
 
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
