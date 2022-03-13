@@ -4,6 +4,7 @@ import pybullet as p
 import pybullet_data
 import pyrosim.pyrosim as pyrosim
 from time import sleep
+import constants as c
 
 class SIMULATION:
     def __init__(self):
@@ -15,8 +16,8 @@ class SIMULATION:
         
 
     def Run(self):
-        for timeStep in range(100):
-             sleep(1/1000)
+        for timeStep in range(c.numTimeSteps):
+             sleep(c.sleep)
              p.stepSimulation()
              self.robot.Sense(timeStep)
              self.robot.Think()

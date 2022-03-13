@@ -62,8 +62,6 @@ class SOLUTION:
     def Mutate(self):
         self.randRow = random.randint(0,2)
         self.randCol = random.randint(0,1)
-        print("randRow= ", self.randRow)
-        print("randCol= ", self.randCol)
 
 
         self.weights[self.randRow][self.randCol]= (np.random.rand()) *2 -1
