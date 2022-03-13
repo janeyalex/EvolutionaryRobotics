@@ -24,4 +24,4 @@ numberOfGenerations = 20
 
 numTimeSteps = 1000
 
-sleep = 1/500
+sleep = 1/1000
