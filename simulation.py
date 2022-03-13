@@ -15,14 +15,15 @@ class SIMULATION:
         
 
     def Run(self):
-        for timeStep in range(1000):
+        for timeStep in range(100):
              sleep(1/1000)
              p.stepSimulation()
              self.robot.Sense(timeStep)
              self.robot.Think()
              self.robot.Act()
 
-
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
         
     def __del__(self):
         p.disconnect()
