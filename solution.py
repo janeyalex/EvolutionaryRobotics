@@ -2,8 +2,8 @@
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import constants as c
-import random
 import os
+import random
 
 class SOLUTION:
     def __init__(self):
@@ -58,3 +58,12 @@ class SOLUTION:
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+3, weight=self.weights[currentRow][currentColumn])
 
         pyrosim.End()
+
+    def Mutate(self):
+        self.randRow = random.randint(0,2)
+        self.randCol = random.randint(0,1)
+        print("randRow= ", self.randRow)
+        print("randCol= ", self.randCol)
+
+
+        self.weights[self.randRow][self.randCol]= (np.random.rand()) *2 -1
