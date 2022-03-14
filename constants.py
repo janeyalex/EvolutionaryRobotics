@@ -22,7 +22,7 @@ maxForce = 25
 
 numberOfGenerations = 20
 
-numTimeSteps = 1000
+numTimeSteps = 100
 
 sleep = 1/1000
 
