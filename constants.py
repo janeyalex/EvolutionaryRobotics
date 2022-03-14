@@ -25,3 +25,5 @@ numberOfGenerations = 20
 numTimeSteps = 1000
 
 sleep = 1/1000
+
+populationSize = 2

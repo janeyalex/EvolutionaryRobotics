@@ -6,7 +6,8 @@ import os
 import random
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, nextAvailableID):
+        self.myID = nextAvailableID
         self.weights = np.empty([3,2])
         for i in range(3):
             for j in range(2):
@@ -18,7 +19,7 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
 
-        os.system('python3 simulate.py ' + displaySetting)
+        os.system('python3 simulate.py ' + displaySetting + '&')
 
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
@@ -65,3 +66,6 @@ class SOLUTION:
 
 
         self.weights[self.randRow][self.randCol]= (np.random.rand()) *2 -1
+    
+    def Set_ID(self, nextID):
+        self.myID = nextID + 1
