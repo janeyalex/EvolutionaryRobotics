@@ -15,44 +15,27 @@ class SOLUTION:
                 self.weights [i][j] = np.random.rand()
         self.weights = self.weights * 2 - 1
         
-    def Evaluate(self, displaySetting):
-        # self.Create_World()
-        # self.Create_Body()
-        # self.Create_Brain()
-        
-        
-        # os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
-
-        # self.fileName = 'fitness'+str(self.myID)+'.txt'
+  
+    def Start_Simulation(self, displaySetting):
+        self.Create_World()
+        self.Create_Body()
+        self.Create_Brain()
     
-        # while not os.path.exists(self.fileName):
-        #     time.sleep(0.01)
+    
+        os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
 
-        # f = open(self.fileName, "r")
-        # self.fitness = float(f.read())
+    def Wait_For_Simulation_To_End(self):
+        self.fileName = 'fitness'+str(self.myID)+'.txt'
+
+        while not os.path.exists(self.fileName):
+            time.sleep(0.01)
+
+        f = open(self.fileName, "r")
+        self.fitness = float(f.read())
         # print(self.fitness)
-        # f.close()
+        f.close()
 
-        def Start_Simulation(self, displaySetting):
-            self.Create_World()
-            self.Create_Body()
-            self.Create_Brain()
-        
-        
-            os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
-
-        def Wait_For_Simulation_To_End(self):
-            self.fileName = 'fitness'+str(self.myID)+'.txt'
-    
-            while not os.path.exists(self.fileName):
-                time.sleep(0.01)
-
-            f = open(self.fileName, "r")
-            self.fitness = float(f.read())
-            print(self.fitness)
-            f.close()
-
-            os.system('rm ' +self.fileName)
+        os.system('rm ' +self.fileName)
 
         
         
