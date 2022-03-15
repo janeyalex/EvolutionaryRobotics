@@ -15,8 +15,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evolve(self):
         self.Evaluate(self.parents)
-
-
+        
         # self.parent.Evaluate("GUI")
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
@@ -25,8 +24,8 @@ class PARALLEL_HILL_CLIMBER:
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
-        # self.Print()
-        # self.Select()
+        self.Print()
+        self.Select()
 
     def Spawn(self):
         self.children ={}
@@ -48,21 +47,33 @@ class PARALLEL_HILL_CLIMBER:
             self.solutionVal.Start_Simulation("DIRECT")
 
         for key in solutions:
-            self.solutionVal = self.parents[key]
+            self.solutionVal = solutions[key]
             self.solutionVal.Wait_For_Simulation_To_End()
 
     def Select(self):
-        if (self.parent.fitness > self.child.fitness):
-            self.parent = self.child
+        for key in self.parents:
+            if (self.parents[key].fitness > self.children[key].fitness):
+                self.parents[key] = self.children[key]
 
 
     def Print(self):
-        print("")
-        print("")
-        print("Parent Fitness: ", self.parent.fitness)
-        print("Child Fitness: ", self.child.fitness)
-        print("")
+        for adultkey in self.parents:
+            # for kidkey in self.children:
+            self.singleParent = self.parents[adultkey]
+            self.singleChild = self.children[adultkey]
+            print("")
+            print("Parent Fitness: ", self.singleParent.fitness," Child Fitness: ", self.singleChild.fitness )
+            print("")
+                
+        
+        
 
     def Show_Best(self):
-        pass
-        # self.parent.Evaluate('GUI')
+        self.lowFit = self.parents[0]
+        for key in self.parents:
+            if self.parents[key].fitness < self.lowFit.fitness:
+                self.lowFit = self.parents[key]
+
+        self.lowFit.Start_Simulation("GUI")
+        print("Final Fitness Value: ", self.lowFit.fitness)
+        
