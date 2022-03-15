@@ -4,6 +4,7 @@ import pyrosim.pyrosim as pyrosim
 import constants as c
 import os
 import random
+import time
 
 class SOLUTION:
     def __init__(self, nextAvailableID):
@@ -15,16 +16,43 @@ class SOLUTION:
         self.weights = self.weights * 2 - 1
         
     def Evaluate(self, displaySetting):
-        self.Create_World()
-        self.Create_Body()
-        self.Create_Brain()
+        # self.Create_World()
+        # self.Create_Body()
+        # self.Create_Brain()
+        
+        
+        # os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
 
-        os.system('python3 simulate.py ' + displaySetting + '&')
+        # self.fileName = 'fitness'+str(self.myID)+'.txt'
+    
+        # while not os.path.exists(self.fileName):
+        #     time.sleep(0.01)
 
-        f = open("fitness.txt", "r")
-        self.fitness = float(f.read())
-        f.close()
+        # f = open(self.fileName, "r")
+        # self.fitness = float(f.read())
+        # print(self.fitness)
+        # f.close()
 
+        def Start_Simulation(self, displaySetting):
+            self.Create_World()
+            self.Create_Body()
+            self.Create_Brain()
+        
+        
+            os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
+
+        def Wait_For_Simulation_To_End(self):
+            self.fileName = 'fitness'+str(self.myID)+'.txt'
+    
+            while not os.path.exists(self.fileName):
+                time.sleep(0.01)
+
+            f = open(self.fileName, "r")
+            self.fitness = float(f.read())
+            print(self.fitness)
+            f.close()
+
+            os.system('rm ' +self.fileName)
 
         
         
