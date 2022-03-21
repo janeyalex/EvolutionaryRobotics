@@ -27,3 +27,7 @@ numTimeSteps = 1000
 sleep = 1/1000
 
 populationSize = 10
+
+numSensorNeurons = 3
+
+numMotorNeurons = 2

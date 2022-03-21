@@ -9,9 +9,9 @@ import time
 class SOLUTION:
     def __init__(self, nextAvailableID):
         self.myID = nextAvailableID
-        self.weights = np.empty([3,2])
-        for i in range(3):
-            for j in range(2):
+        self.weights = np.empty([c.numSensorNeurons,c.numMotorNeurons])
+        for i in range(c.numSensorNeurons):
+            for j in range(c.numMotorNeurons):
                 self.weights [i][j] = np.random.rand()
         self.weights = self.weights * 2 - 1
         
@@ -22,7 +22,7 @@ class SOLUTION:
         self.Create_Brain()
     
     
-        os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
+        os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+' '+'2&>1'+ ' &')
 
     def Wait_For_Simulation_To_End(self):
         self.fileName = 'fitness'+str(self.myID)+'.txt'
@@ -64,17 +64,17 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_BackLeg")
         pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
 
-        row = [0,1,2]
-        col = [0,1]
+        row = list(range(0,c.numSensorNeurons))
+        col = list(range(0,c.numMotorNeurons))
         for currentRow in row:
             for currentColumn in col:
-                pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+3, weight=self.weights[currentRow][currentColumn])
+                pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+c.numSensorNeurons, weight=self.weights[currentRow][currentColumn])
 
         pyrosim.End()
-
+        exit()
     def Mutate(self):
-        self.randRow = random.randint(0,2)
-        self.randCol = random.randint(0,1)
+        self.randRow = random.randint(0,c.numSensorNeurons-1)
+        self.randCol = random.randint(0,c.numMotorNeurons-1)
 
 
         self.weights[self.randRow][self.randCol]= (np.random.rand()) *2 -1
