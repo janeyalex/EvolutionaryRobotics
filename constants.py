@@ -28,6 +28,6 @@ sleep = 1/1000
 
 populationSize = 1
 
-numSensorNeurons = 4
+numSensorNeurons = 9
 
-numMotorNeurons = 3
+numMotorNeurons = 8
