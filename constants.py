@@ -20,14 +20,16 @@ phaseOffsetFront = -(3/2)*np.pi
 
 maxForce = 25
 
-numberOfGenerations = 1
+numberOfGenerations = 10
 
 numTimeSteps = 1000
 
 sleep = 1/1000
 
-populationSize = 1
+populationSize = 15
 
 numSensorNeurons = 9
 
 numMotorNeurons = 8
+
+motorJointRange = 0.2
