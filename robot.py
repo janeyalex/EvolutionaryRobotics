@@ -28,7 +28,7 @@ class ROBOT:
         self.timeStep=timeStep
         for i in self.sensors:
             self.sensorI = self.sensors[i]
-            self.sensorI.getValue(self.timeStep)
+        
 
 
     def Prepare_To_Act(self):
@@ -53,13 +53,22 @@ class ROBOT:
         self.basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         #self.positionOfLinkZero = self.stateOfLinkZero[0]
         self.basePosition = self.basePositionAndOrientation[0]
+        
         #self.xCoordinateOfLinkZero = self.positionOfLinkZero[0]
-        self.xPosition = self.basePosition[0]
+        self.zPosition = self.basePosition[2]
         #print(self.xCoordinateOfLinkZero)
+
+        #sensor value of front lower leg
+        #self.FrontSensorVal = self.sensors["FrontLowerLeg"].getValue(c.numTimeSteps)
+
+        #self.fitness = self.zPosition - self.FrontSensorVal
+    
+        
         
         self.fileName = 'tmp'+str(self.solutionID)+'.txt'
         f = open(self.fileName, "w")
-        f.write(str(self.xPosition))
+        f.write(str(self.zPosition))
+        #f.write(str(self.fitness))
         f.close()
 
         self.newFileName = 'fitness'+str(self.solutionID)+'.txt'
