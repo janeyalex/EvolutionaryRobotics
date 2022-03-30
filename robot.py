@@ -59,16 +59,21 @@ class ROBOT:
         #print(self.xCoordinateOfLinkZero)
 
         #sensor value of front lower leg
-        #self.FrontSensorVal = self.sensors["FrontLowerLeg"].getValue(c.numTimeSteps)
+        self.FrontLegSensorVal = self.sensors["FrontLowerLeg"].getSumValues()
+        self.BackLegSensorVal = self.sensors["BackLowerLeg"].getSumValues()
+        self.RightLegSensorVal = self.sensors["RightLowerLeg"].getSumValues()
+        self.LeftLegSensorVal = self.sensors["LeftLowerLeg"].getSumValues()
+        # for timestep in c.numTimeSteps:
+        #     self.FrontSensorVal += self.sensors[5].getValue(timestep)
 
-        #self.fitness = self.zPosition - self.FrontSensorVal
+        self.fitness = self.zPosition - self.FrontLegSensorVal - self.BackLegSensorVal -self.RightLegSensorVal #-self.LeftLegSensorVal
     
         
         
         self.fileName = 'tmp'+str(self.solutionID)+'.txt'
         f = open(self.fileName, "w")
-        f.write(str(self.zPosition))
-        #f.write(str(self.fitness))
+        #f.write(str(self.zPosition))
+        f.write(str(self.fitness))
         f.close()
 
         self.newFileName = 'fitness'+str(self.solutionID)+'.txt'

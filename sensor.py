@@ -11,6 +11,9 @@ class SENSOR:
         self.timeStep =timeStep
         self.values[self.timeStep] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
 
+    def getSumValues(self):
+        return np.sum(self.values)
+
     def Save_Values(self):
         self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
         self.file_name = "sensoryData"
