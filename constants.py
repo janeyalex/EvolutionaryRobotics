@@ -18,9 +18,9 @@ amplitudeFront = np.pi/6
 frequencyFront = 10
 phaseOffsetFront = -(3/2)*np.pi
 
-maxForce = 25
+maxForce = 50
 
-numberOfGenerations = 10
+numberOfGenerations = 15
 
 numTimeSteps = 1000
 
@@ -32,4 +32,4 @@ numSensorNeurons = 17
 
 numMotorNeurons = 16
 
-motorJointRange = 0.2
+motorJointRange = 0.4
