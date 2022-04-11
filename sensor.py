@@ -1,6 +1,7 @@
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import os
+import constants as c
 
 class SENSOR:
     def __init__(self, linkName):
@@ -9,7 +10,10 @@ class SENSOR:
         
     def getValue(self,timeStep):
         self.timeStep =timeStep
-        self.values[self.timeStep] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+        if(self.linkName == "LeftLowerLeg"):
+            self.values[self.timeStep]= np.sin(c.march*self.timeStep)
+        else:
+            self.values[self.timeStep] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
 
     def Save_Values(self):
         self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
