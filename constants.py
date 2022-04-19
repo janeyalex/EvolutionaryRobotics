@@ -32,4 +32,6 @@ numSensorNeurons = 9
 
 numMotorNeurons = 8
 
+numHiddenNeurons= 1
+
 motorJointRange = 0.4
