@@ -127,6 +127,7 @@ class SOLUTION:
 
         pyrosim.End()
 
+        exit()
     
 
     def Mutate(self):
