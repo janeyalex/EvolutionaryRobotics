@@ -5,6 +5,7 @@ from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
 import constants as c
+import numpy as np
 
 class ROBOT:
     def __init__(self, solutionID):
@@ -58,16 +59,16 @@ class ROBOT:
         self.zPosition = self.basePosition[2]
         #print(self.xCoordinateOfLinkZero)
 
-        #sensor value of front lower leg
-        self.FrontLegSensorVal = self.sensors["FrontLowerLeg"].getSumValues()
-        self.BackLegSensorVal = self.sensors["BackLowerLeg"].getSumValues()
-        self.RightLegSensorVal = self.sensors["RightLowerLeg"].getSumValues()
-        self.LeftLegSensorVal = self.sensors["LeftLowerLeg"].getSumValues()
-        # for timestep in c.numTimeSteps:
-        #     self.FrontSensorVal += self.sensors[5].getValue(timestep)
+        # sum of sensor values
+        self.FrontLegSensorVal = self.sensors["FrontLowerLeg"].getSumValues()/c.numTimeSteps
+        self.BackLegSensorVal = self.sensors["BackLowerLeg"].getSumValues()/c.numTimeSteps
+        self.RightLegSensorVal = self.sensors["RightLowerLeg"].getSumValues()/c.numTimeSteps
+        self.LeftLegSensorVal = self.sensors["LeftLowerLeg"].getSumValues()/c.numTimeSteps
+       
+        
 
-        self.fitness = self.zPosition - self.FrontLegSensorVal - self.BackLegSensorVal -self.RightLegSensorVal #-self.LeftLegSensorVal
-    
+        self.fitness = self.zPosition - self.FrontLegSensorVal - self.BackLegSensorVal -self.LeftLegSensorVal #-self.RightLegSensorVal 
+        # self.fitness = self.zPosition - self.FrontLegSensorVal -self.RightLegSensorVal
         
         
         self.fileName = 'tmp'+str(self.solutionID)+'.txt'
