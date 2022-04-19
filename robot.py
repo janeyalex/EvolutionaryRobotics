@@ -59,14 +59,14 @@ class ROBOT:
         #print(self.xCoordinateOfLinkZero)
 
         #sensor value of front lower leg
-        self.FrontLegSensorVal = self.sensors["FrontLowerLeg"].getSumValues()
-        self.BackLegSensorVal = self.sensors["BackLowerLeg"].getSumValues()
-        self.RightLegSensorVal = self.sensors["RightLowerLeg"].getSumValues()
-        self.LeftLegSensorVal = self.sensors["LeftLowerLeg"].getSumValues()
+        self.FrontLegSensorVal = self.sensors["FrontLowerLeg"].getSumValues()/c.numTimeSteps
+        self.BackLegSensorVal = self.sensors["BackLowerLeg"].getSumValues()/c.numTimeSteps
+        self.RightLegSensorVal = self.sensors["RightLowerLeg"].getSumValues()/c.numTimeSteps
+        self.LeftLegSensorVal = self.sensors["LeftLowerLeg"].getSumValues()/c.numTimeSteps
         # for timestep in c.numTimeSteps:
         #     self.FrontSensorVal += self.sensors[5].getValue(timestep)
 
-        self.fitness = self.zPosition - self.FrontLegSensorVal - self.BackLegSensorVal -self.RightLegSensorVal #-self.LeftLegSensorVal
+        self.fitness = self.zPosition - self.FrontLegSensorVal - self.BackLegSensorVal  -self.LeftLegSensorVal #-self.RightLegSensorVal
     
         
         
