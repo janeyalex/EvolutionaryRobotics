@@ -84,7 +84,7 @@ class PARALLEL_HILL_CLIMBER:
         self.highFit.Start_Simulation("GUI")
         print("Final Fitness Value: ", self.highFit.fitness)
 
-        np.savetxt('fitnessData.txt', self.fitData)
+        # np.savetxt('fitnessData.txt', self.fitData)
         
         self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
         self.file_name = "fitnessDataA"
