@@ -14,6 +14,7 @@ class PARALLEL_HILL_CLIMBER:
             self.parents[key]= SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1 
 
+        self.genCount = 0
         self.fitData = np.empty([c.populationSize,c.numberOfGenerations])
 
     def Evolve(self):
@@ -22,6 +23,7 @@ class PARALLEL_HILL_CLIMBER:
         # self.parent.Evaluate("GUI")
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
+            self.genCount += 1
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
@@ -58,6 +60,8 @@ class PARALLEL_HILL_CLIMBER:
             if (self.parents[key].fitness < self.children[key].fitness):
                 self.parents[key] = self.children[key]
 
+            self.fitData[key, self.genCount] = self.parents[key].fitness
+
 
     def Print(self):
         for adultkey in self.parents:
@@ -79,4 +83,11 @@ class PARALLEL_HILL_CLIMBER:
 
         self.highFit.Start_Simulation("GUI")
         print("Final Fitness Value: ", self.highFit.fitness)
+
+        np.savetxt('fitnessData.txt', self.fitData)
         
+        self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
+        self.file_name = "fitnessDataA"
+        self.completeName = os.path.join(self.save_path, self.file_name)
+
+        np.save(self.completeName,self.fitData)
