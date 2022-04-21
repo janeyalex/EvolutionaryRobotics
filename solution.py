@@ -36,6 +36,7 @@ class SOLUTION:
     
     
         os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+' '+'2&>1'+ ' &')
+        # os.system('python3 simulate.py ' + displaySetting +' '+ str(self.myID)+ ' &')
 
     def Wait_For_Simulation_To_End(self):
         self.fileName = 'fitness'+str(self.myID)+'.txt'

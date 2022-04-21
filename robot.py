@@ -18,7 +18,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK(self.brainName)
 
         os.system('rm ' +self.brainName)
-        
+    
 
     def Prepare_To_Sense(self):
         self.sensors ={}
@@ -47,7 +47,8 @@ class ROBOT:
                 
     def Think(self):
         self.nn.Update()
-        # self.nn.Print()
+        self.nn.Print() 
+        
     
     def Get_Fitness(self):
         #self.stateOfLinkZero = p.getLinkState(self.robotId,0)
@@ -81,4 +82,5 @@ class ROBOT:
         os.system('mv ' + self.fileName+ ' '+ self.newFileName)
 
     
+   
         
