@@ -30,8 +30,8 @@ xNum = [1,2,3,4,5,6,7,8,9,10]
 fitAvgA = np.average(fitA,axis=0)
 fitAvgB = np.average(fitB,axis=0)
 
-plt.plot(xNum,fitAvgA,'r-')
-plt.plot(xNum,fitAvgB,'b*-')
+plt.plot(xNum,fitAvgA,'r-', label = 'Robot A')
+plt.plot(xNum,fitAvgB,'b*-', label = 'Robot B')
 plt.xlim(1, 10)
 plt.xlabel('Generation')
 plt.ylabel('Averaged Fitness Value over 10 Runs')
