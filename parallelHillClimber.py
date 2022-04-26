@@ -5,10 +5,11 @@ import os
 import numpy as np
 
 class PARALLEL_HILL_CLIMBER:
-    def __init__(self):
+    def __init__(self, dataID):
         os.system('rm brain*.nndf')
         os.system('rm fitness*.txt')
         self.nextAvailableID = 0
+        self.dataID = dataID
         self.parents = {}
         for key in range(0, c.populationSize):
             self.parents[key]= SOLUTION(self.nextAvailableID)
@@ -85,7 +86,7 @@ class PARALLEL_HILL_CLIMBER:
         print("Final Fitness Value: ", self.highFit.fitness)
         
         self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
-        self.file_name = "fitnessDataB"
+        self.file_name = "fitnessDataB"+ str(self.dataID)
         self.completeName = os.path.join(self.save_path, self.file_name)
 
         np.save(self.completeName,self.fitData)
