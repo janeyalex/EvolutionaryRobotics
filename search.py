@@ -9,3 +9,4 @@ for i in range(2):
     phc = PARALLEL_HILL_CLIMBER(dataID)
     phc.Evolve()
     phc.Show_Best()
+    dataID += 1
