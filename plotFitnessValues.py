@@ -58,11 +58,10 @@ for i in range(1,41):
 overallAvgA = np.average(maxAdata,axis=0)
 overallAvgB = np.average(maxBdata,axis=0)
 
-print(stats.ttest_ind(a=overallAvgA[49], b=overallAvgB[49], equal_var=True))
-exit()
+print(stats.ttest_ind(a=overallAvgA, b=overallAvgB, equal_var=True))
 
-stdDevA = np.std(avgAdata, axis = 0)
-stdDevB = np.std(avgBdata, axis = 0)
+stdDevA = np.std(maxAdata, axis = 0)
+stdDevB = np.std(maxBdata, axis = 0)
 
 # #take the max of each generation over all runs
 # overallMaxA = np.max(maxAdata,axis=0)
