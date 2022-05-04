@@ -3,6 +3,7 @@ from tkinter import font
 import numpy as np
 import matplotlib.pyplot as plt
 import constants as c
+from scipy import stats
 
 avgAdata = np.empty([60,50])
 avgBdata = np.empty([60,50])
@@ -48,20 +49,20 @@ for i in range(1,41):
     minB = np.min(fitB,axis=0)
     minBdata[i-1] = minB
 
-    #maxes of the 50th generation
-    max50A = np.max(maxAdata[:,49])
-    # print(max50A)
 
-    max50B = np.max(maxBdata[:,49])
-    # print(max50B)
-  
 
 # #take the average of each generation over all runs
 # overallAvgA = np.average(avgAdata,axis=0)
 # overallAvgB = np.average(avgBdata,axis=0)
 
-# stdDevA = np.std(avgAdata, axis = 0)
-# stdDevB = np.std(avgBdata, axis = 0)
+overallAvgA = np.average(maxAdata,axis=0)
+overallAvgB = np.average(maxBdata,axis=0)
+
+print(stats.ttest_ind(a=overallAvgA[49], b=overallAvgB[49], equal_var=True))
+exit()
+
+stdDevA = np.std(avgAdata, axis = 0)
+stdDevB = np.std(avgBdata, axis = 0)
 
 # #take the max of each generation over all runs
 # overallMaxA = np.max(maxAdata,axis=0)
@@ -72,15 +73,15 @@ for i in range(1,41):
 # overallMinA = np.max(minAdata,axis=0)
 # overallMinB = np.max(minBdata,axis=0)
 
-# xNum = list(np.arange(1,51))
+xNum = list(np.arange(1,51))
 
-# with plt.style.context('fivethirtyeight'):
+with plt.style.context('fivethirtyeight'):
    
 
-# #average plot
-#     # plt.figure(figsize=(8, 8))
-#     plt.plot(xNum,overallAvgA, color = 'teal', label = 'Robot A: no hidden neuron')
-#     plt.plot(xNum,overallAvgB, color = 'tomato',label = 'Robot B: one hidden neuron')
+#average plot
+    # plt.figure(figsize=(8, 8))
+    plt.plot(xNum,overallAvgA, color = 'teal', label = 'Robot A: no hidden neuron')
+    plt.plot(xNum,overallAvgB, color = 'tomato',label = 'Robot B: one hidden neuron')
 
 #     #max plot
 #     # plt.plot(xNum,overallMaxA, color = 'teal' ,label = 'Robot A')
@@ -90,26 +91,26 @@ for i in range(1,41):
 #     # plt.plot(xNum,overallMinA, color = 'teal')
 #     # plt.plot(xNum,overallMinB, color = 'tomato')
 
-# # plt.errorbar(xNum, overallAvgA, yerr = stdDevA,fmt='o',ecolor = 'cyan', color = 'black')
+    # plt.errorbar(xNum, overallAvgA, yerr = stdDevA,fmt='o',ecolor = 'cyan', color = 'black')
 # # plt.errorbar(xNum, overallAvgB, yerr = stdDevB,fmt='o',ecolor = 'magenta', color = 'black')
 #     # plt.annotate('Best of A', xy=(15,1.8), xycoords='data', fontsize = 10)
 #     # plt.annotate('Best of B', xy=(15,1.45), xycoords='data', fontsize = 10)
 #     # plt.annotate('Worst of A', xy=(15,1.1), xycoords='data', fontsize = 10)
 #     # plt.annotate('Worst of B', xy=(15,1.3), xycoords='data', fontsize = 10)
-#     plt.xlim(1, 50)
-#     plt.yticks(fontsize=12)
-#     plt.xticks(fontsize=12)
-#     plt.xlabel('Generation', fontsize= 12)
-#     plt.ylabel('Averaged Fitness Value',fontsize= 12)
-#     plt.suptitle("Average Fitness of A and B Robot")
-#     plt.title('Population Size= 10, Generations = 50', fontsize = 12)
+    plt.xlim(1, 50)
+    plt.yticks(fontsize=12)
+    plt.xticks(fontsize=12)
+    plt.xlabel('Generation', fontsize= 12)
+    plt.ylabel('Averaged Fitness Value',fontsize= 12)
+    plt.suptitle("Average Fitness of A and B Robot")
+    plt.title('Population Size= 10, Generations = 50', fontsize = 12)
 
-#     # plt.ylabel('Max and Min Fitness Values',fontsize= 12)
-#     # plt.suptitle("Max and Min Fitness of A and B Robot")
-#     # plt.title('Population Size= 10, Generations = 50', fontsize = 12)
+    # plt.ylabel('Max and Min Fitness Values',fontsize= 12)
+    # plt.suptitle("Max and Min Fitness of A and B Robot")
+    # plt.title('Population Size= 10, Generations = 50', fontsize = 12)
     
-#     plt.legend(prop= {"size": 10})
-#     plt.show()
+    plt.legend(prop= {"size": 10})
+    plt.show()
     
 
 # # print(stdDevA)
