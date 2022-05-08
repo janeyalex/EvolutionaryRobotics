@@ -5,7 +5,7 @@ from parallelHillClimber import PARALLEL_HILL_CLIMBER
 #     os.system("python3 generate.py")
 #     os.system("python3 simulate.py")
 dataID= 41
-for i in range(20):
+for i in range(1):
     phc = PARALLEL_HILL_CLIMBER(dataID)
     phc.Evolve()
     phc.Show_Best()

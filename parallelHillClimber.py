@@ -30,7 +30,7 @@ class PARALLEL_HILL_CLIMBER:
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
-        # self.Print()
+        self.Print()
         self.Select()
 
     def Spawn(self):
@@ -82,13 +82,13 @@ class PARALLEL_HILL_CLIMBER:
             if self.parents[key].fitness > self.highFit.fitness:
                 self.highFit = self.parents[key]
 
-        # self.highFit.Start_Simulation("GUI")
-        # print("Final Fitness Value: ", self.highFit.fitness)
+        self.highFit.Start_Simulation("GUI")
+        print("Final Fitness Value: ", self.highFit.fitness)
 
         # np.savetxt('fitnessData.txt', self.fitData)
         
-        self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
-        self.file_name = "fitnessDataA" + str(self.dataID)
-        self.completeName = os.path.join(self.save_path, self.file_name)
+        # self.save_path = '/Users/janeyalex/Documents/CS206/JaneysBots/data'
+        # self.file_name = "fitnessDataA" + str(self.dataID)
+        # self.completeName = os.path.join(self.save_path, self.file_name)
 
-        np.save(self.completeName,self.fitData)
+        # np.save(self.completeName,self.fitData)
