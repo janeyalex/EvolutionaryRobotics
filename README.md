@@ -1,2 +1,3 @@
 # JaneysBots
-CS 206 Assignments
+Evolutionary Robotics assignment code base
+
