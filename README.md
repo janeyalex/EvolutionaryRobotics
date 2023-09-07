@@ -1,4 +1,5 @@
 # JaneysBots
-Evolutionary Robotics assignment code base
+Evolutionary Robotics code base
 
-Each branch is a step towards creating the environment, simulation and robot used in the final project. 
+This project investigates evolutionary robotics from start to finish- creating the environment, building the robot and then investiagting different actions of the robot. 
+This included evolvong the robot to jump, changing the body shape and stride of the robot and measuring the effectiveness of thier movement. 
